@@ -33,7 +33,7 @@ WITH email_serial_number_mapping AS (
     SELECT email, serialnumber
     FROM customer_curated)
 SELECT s.serialnumber, sensorreadingtime, distancefromobject, x, y, z
-FROM step_trainer_landing s
+FROM step_trainer_trusted s
 LEFT JOIN email_serial_number_mapping e 
     ON e.serialnumber = s.serialnumber
 INNER JOIN accelerometer_trusted a 
