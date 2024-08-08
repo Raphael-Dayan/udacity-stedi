@@ -29,15 +29,10 @@ StepTrainerTrusted_node1723017963937 = glueContext.create_dynamic_frame.from_cat
 
 # Script generated for node SQL Query
 SqlQuery805 = '''
-WITH email_serial_number_mapping AS (
-    SELECT email, serialnumber
-    FROM customer_curated)
-SELECT s.serialnumber, sensorreadingtime, distancefromobject, x, y, z
-FROM step_trainer_trusted s
-LEFT JOIN email_serial_number_mapping e 
-    ON e.serialnumber = s.serialnumber
-INNER JOIN accelerometer_trusted a 
-    ON a.user = e.email AND s.sensorreadingtime = a.timestamp;
+SELECT DISTINCT *
+FROM accelerometer_trusted a
+FULL OUTER JOIN step_trainer_trusted s
+    ON s.sensorreadingtime = a.timestamp;
 '''
 SQLQuery_node1723019857079 = sparkSqlQuery(glueContext, query = SqlQuery805, mapping = {"step_trainer_trusted":StepTrainerTrusted_node1723017963937, "accelerometer_trusted":AccelerometerTrusted_node1723017968787, "customer_curated":CustomerCurated_node1723019832001}, transformation_ctx = "SQLQuery_node1723019857079")
 
