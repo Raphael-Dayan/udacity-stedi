@@ -37,7 +37,7 @@ FROM step_trainer_trusted s
 LEFT JOIN email_serial_number_mapping e 
     ON e.serialnumber = s.serialnumber
 INNER JOIN accelerometer_trusted a 
-    ON a.email = e.email AND s.sensorreadingtime = a.timestamp;
+    ON a.user = e.email AND s.sensorreadingtime = a.timestamp;
 '''
 SQLQuery_node1723019857079 = sparkSqlQuery(glueContext, query = SqlQuery805, mapping = {"step_trainer_trusted":StepTrainerTrusted_node1723017963937, "accelerometer_trusted":AccelerometerTrusted_node1723017968787, "customer_curated":CustomerCurated_node1723019832001}, transformation_ctx = "SQLQuery_node1723019857079")
 

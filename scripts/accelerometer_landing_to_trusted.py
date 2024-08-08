@@ -34,7 +34,7 @@ WITH users_allowed_for_research AS (
 SELECT DISTINCT a.* 
 FROM accelerometer_landing a
 JOIN users_allowed_for_research u 
-ON a.user = u.email AND a.timestamp >= u.sharewithresearchasofdate
+ON a.user = u.email
 '''
 AccelerometerFiltering_node1722708481512 = sparkSqlQuery(glueContext, query = SqlQuery0, mapping = {"customer_landing":CustomerLanding_node1722707499612, "accelerometer_landing":AccelerometerLanding_node1722707491975}, transformation_ctx = "AccelerometerFiltering_node1722708481512")
 
